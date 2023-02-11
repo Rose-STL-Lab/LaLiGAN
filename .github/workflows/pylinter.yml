@@ -1,0 +1,23 @@
+name: Checks python code for linting
+
+on: [push, pull_request]
+
+jobs:
+  
+  # This workflow contains a single job called "test"
+  check_pylint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Python Linter
+        uses: sunnysid3up/python-linter@master
+        with:
+          source: "src"
+          mypy-options: "--ignore-missing-imports --show-error-codes"
+          pylint-options: "--rcfile=setup.cfg"
+          isort-options: "-w 100"
+          django: true
