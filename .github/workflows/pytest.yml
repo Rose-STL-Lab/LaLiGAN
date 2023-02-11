@@ -12,11 +12,13 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+
       - name: Install dependencies
         run: |
           pip install flake8 pytest pytest-cov
+
       - name: Build coverage file
         run: |
           pytest --cache-clear --cov=src tests/ > pytest-coverage.txt
-    - name: Comment coverage
-      uses: coroo/pytest-coverage-commentator@v1.0.2
+      - name: Comment coverage
+        uses: coroo/pytest-coverage-commentator@v1.0.2
