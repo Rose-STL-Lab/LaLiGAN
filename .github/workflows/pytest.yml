@@ -1,6 +1,6 @@
 name: Runs pytests and generates coverage report
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   

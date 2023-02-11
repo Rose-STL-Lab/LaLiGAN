@@ -1,6 +1,6 @@
 name: Checks python code for linting
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   
