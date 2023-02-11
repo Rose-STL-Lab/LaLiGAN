@@ -6,10 +6,11 @@ This repository is the starting point from which all repositories should be prep
 
 These are [github actions](https://github.com/features/actions) configured to perform the checks when triggered. The configurations are located in .github/workflows
 
-| Check     | Triggers  | Description   |
-| ---       | ---       | ---           |
-|           |           |               |
-|           |           |               |
+| Check         | Triggers      | Description   |
+| ---           | ---           | ---           |
+| Linting       | Pull request  | Checks code quality and comments on files changed |
+| Coverage      | Pull request  | Runs unit tests and publishes a coverage report |
+| File check    | Pull request  | Checks for presence of basic scripts |
 
 ## 2. Custom checks via Github Workflows
 
