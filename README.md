@@ -48,3 +48,12 @@ Advantages of docker include choice of OS along with a fixed set of libraries in
 
     - Provide access to the different member groups in the lab as per Settings > Collaborators and teams
     - Add branch protection rule as per Settings > Code and automation > Branch protection rules
+
+2. Directory structure setup
+
+    - Copy the following to your repo: .github, requirements.txt (change python version), check_scripts, tests (with __init__.py)
+    - All code you write should go in src (Ensure it has __init__.py)
+    - All other code (like baselines taken from other repos) should be in a separate folder other_src
+    - All unit tests should be written in tests using [pytest conventions](https://www.numpyninja.com/post/pytest-a-beginner-guide)
+    - Please modify the README to incldue instructions for your own repo
+    - The following files need to be added: prepare_dataset.sh, run_tests.sh, run_experiments.sh
