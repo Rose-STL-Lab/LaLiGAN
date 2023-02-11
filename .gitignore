@@ -151,3 +151,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Ignore any locally generated test coverage
+pytest-coverage.txt
+
+# Ignore any locally generated check files
+filechk_results.txt
