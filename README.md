@@ -25,4 +25,18 @@ The main branch will not be allowed direct commits. This is managed by the prote
 4. This review cycle continues till the code reaches satisfactory quality.
 5. Once ready the code can be merged by an eligible person to the main branch and is ready for release.
 
-## 4. Reproducibility using Docker
+The human code reviews need to ensure the following code styling guidelines are followed. To ensure a thorough and proper review code reviewers should be given at least 1 week before the code needs to be released.
+
+## 4. Reproducibility
+
+The key metric here is that the reviewer should be able to download and run a sample test of your code using a trained model within 15 minutes and without having to go through code. There should be a script to download and prepare data for use with clear and easy instructions. Similarly, there should be a script to run basic experiments from simple tests to complete re-training. Further, the environment needs to be replicable which can be done using the following options:
+
+- Approach 1 (Most basic, not very reliable): requirements.txt file with versions for each package including python
+
+- Approach 2 (Less basic, not reliable): Virtual environments with library installations 
+
+- Approach 3 (Slightly complex, most reliable): Define a docker environment and write a script to prepare the same for runs.
+
+Advantages of docker include choice of OS along with a fixed set of libraries installed. This ensures that the user does not need to install anything on their machine or grapple with versioning issues to be able to run your code.
+
+# Repo Setup Instructions
