@@ -21,10 +21,11 @@ jobs:
         uses: actions/checkout@v3
 
       # Runs djdefi/cloc-action
-      - name: Install cloc
+      - name: Install and run cloc
         run: |
           sudo apt-get install cloc
-          cloc src > cloc_report.txt
+          cloc src/ > cloc_report.txt
+          cloc src/
         
       - name: PR comment with file
         uses: thollander/actions-comment-pull-request@v2
