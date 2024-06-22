@@ -1,60 +1,111 @@
-# Rose-STL Lab Code Quality Framework
+# Latent Space Symmetry Discovery (LaLiGAN)
 
-This repository is the starting point from which all repositories should be prepared for code release. The following are the different code quality checks in this repository that should be ported to your own repo.
+Code for our ICML 2024 paper, [Latent Space Symmetry Discovery](https://arxiv.org/pdf/2310.00105).
 
-## 1. Automated Github Actions
+![LaLiGAN](figure.png)
 
-These are [github actions](https://github.com/features/actions) configured to perform the checks when triggered. The configurations are located in .github/workflows
+## Setup datasets
 
-| Check         | Triggers      | Description   |
-| ---           | ---           | ---           |
-| Linting       | Pull request  | Checks code quality and comments on files changed |
-| Coverage      | Pull request  | Runs unit tests and publishes a coverage report |
-| File check    | Pull request  | Checks for presence of basic scripts |
+### Reaction-Diffusion System
+The system is simulated with the Matlab scripts provided in [SINDy Autoencoders](https://github.com/kpchamp/SindyAutoencoders/tree/master/rd_solver).
 
-## 2. Custom checks via Github Workflows
+Running the script `reaction_diffusion.m` should produce the data file `reaction_diffusion.mat`. Then, place it under `./data` in this repository.
 
-The are custom script based checks triggered using github actions. The scripts are located in check_scripts. Each script has a corresponding triggering workflow in .github/workflows
+Alternatively, download the data from [this link](https://drive.google.com/file/d/1N-oV4wGCBo6TxUX8VuUhWiAlVvuUokaj/view?usp=sharing).
 
-## 3. Human code reviews
+### Rotating Object
+Generate the renderings of a bookshelf with different orientations:
+```
+python data_utils/rot_obj.py --num_samples 10000 --name train
+python data_utils/rot_obj.py --num_samples 100 --name test
+```
 
-The main branch will not be allowed direct commits. This is managed by the protected branch setting in the settings tab of the repo. The setting can be found under Settings > Code and automation > Branch protection rules. Make sure all components of the rule are the same.
+## Experiments
 
+### Reaction-Diffusion System
+LaLiGAN Symmetry discovery in 2D latent space:
+```
+python main.py --config config/rd.cfg
+```
+LaLiGAN Symmetry discovery in 3D latent space:
+```
+python main.py --config config/rd_3d.cfg
+```
+SINDy equation discovery in the LaLiGAN 2D latent space:
+```
+python main_sindy.py --config config/rd_sindy.cfg
+```
+SINDy equation discovery in the LaLiGAN 3D latent space:
+```
+python main_sindy.py --config config/rd_sindy_3d.cfg
+```
+SINDy Autoencoder equation discovery in the 3D latent space:
+```
+python main.py --config config/rd_sindyonly.cfg
+```
 
-The repo owner needs to set this up by creating the same rules. Any development shall be done on branches and code should be merged to main via a pull request before release. The steps to follow for the same are:
+### Nonlinear Pendulum
+LaLiGAN Symmetry discovery for nonlinear pendulum:
+```
+python main.py --config config/pendulum.cfg
+```
+(Baseline) LieGAN symmetry discovery for nonlinear pendulum:
+```
+python main.py --config config/pendulum_liegan.cfg
+```
+SINDy equation discovery in the LaLiGAN latent space:
+```
+python main_sindy.py --config config/pendulum_sindy.cfg
+```
+SINDy Autoencoder equation discovery:
+```
+python main.py --config config/pendulum_sindyae.cfg
+```
+SINDy equation discovery w/o autoencoder:
+```
+python main.py --config config/pendulum_sindyonly.cfg
+```
 
-1. Raise a pull request and make sure all automated checks pass.
-2. Add 2 eligible reviewers (At least 1 with merge access and 1 with read acces) to the pull request.
-3. The reviewers review the pull request and add comments for any modifications as might be needed.
-4. This review cycle continues till the code reaches satisfactory quality.
-5. Once ready the code can be merged by an eligible person to the main branch and is ready for release.
+### Lotka-Volterra Equations
+LaLiGAN Symmetry discovery for Lotka-Volterra system:
+```
+python main.py --config config/lv.cfg
+```
+(Baseline) LieGAN symmetry discovery Lotka-Volterra system:
+```
+python main.py --config config/lv_liegan.cfg
+```
+SINDy equation discovery in the LaLiGAN latent space:
+```
+python main_sindy.py --config config/lv_sindy.cfg
+```
+SINDy Autoencoder equation discovery:
+```
+python main.py --config config/lv_sindyae.cfg
+```
+SINDy equation discovery w/o autoencoder:
+```
+python main.py --config config/lv_sindyonly.cfg
+```
 
-The human code reviewers need to ensure the following code styling guidelines are followed. To ensure a thorough and proper review code reviewers should be given at least 1 week before the code needs to be released.
+### Double Bump World
+Learning $\mathrm{SO}(2) \times \mathrm{SO}(2)$ equivariant representation:
+```
+python main.py --config config/double_bump.cfg
+```
 
-## 4. Reproducibility
+### Rotating Object
+Learning $\mathrm{SO}(3)$ equivariant representation:
+```
+python main.py --config config/rs.cfg
+```
 
-The key metric here is that the reviewer should be able to download and run a sample test of your code using a trained model within 15 minutes and without having to go through code. There should be a script to download and prepare data for use with clear and easy instructions. Similarly, there should be a script to run basic experiments from simple tests to complete re-training. Further, the environment needs to be replicable which can be done using the following options:
-
-- Approach 1 (Most basic, not very reliable): requirements.txt file with versions for each package including python
-
-- Approach 2 (Less basic, not reliable): Virtual environments with library installations 
-
-- Approach 3 (Slightly complex, most reliable): Define a docker environment and write a script to prepare the same for runs.
-
-Advantages of docker include choice of OS along with a fixed set of libraries installed. This ensures that the user does not need to install anything on their machine or grapple with versioning issues to be able to run your code.
-
-# Repo Setup Instructions
-
-1. Settings
-
-    - Provide access to the different member groups in the lab as per Settings > Collaborators and teams
-    - Add branch protection rule as per Settings > Code and automation > Branch protection rules
-
-2. Directory structure setup
-
-    - Copy the following to your repo: .github, requirements.txt (change python version), check_scripts, tests (with __init__.py)
-    - All code you write should go in src (Ensure it has __init__.py)
-    - All other code (like baselines taken from other repos) should be in a separate folder other_src
-    - All unit tests should be written in tests using [pytest conventions](https://www.numpyninja.com/post/pytest-a-beginner-guide)
-    - Please modify the README to incldue instructions for your own repo
-    - The following files need to be added: prepare_dataset.sh, run_tests.sh, run_experiments.sh
+## Cite
+```
+@article{yang2023latent,
+  title={Latent Space Symmetry Discovery},
+  author={Yang, Jianke and Dehmamy, Nima and Walters, Robin and Yu, Rose},
+  journal={arXiv preprint arXiv:2310.00105},
+  year={2023}
+}
+```
