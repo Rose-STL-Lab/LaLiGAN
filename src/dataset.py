@@ -151,7 +151,6 @@ class PendulumDataset(Dataset):
             torch.save(x, f'{path}/{mode}-x.pt')
             torch.save(dx, f'{path}/{mode}-dx.pt')
             torch.save(ddx, f'{path}/{mode}-ddx.pt')
-
         self.n_timesteps = n_timesteps
         n_ics, n_steps, input_dim = x.shape
         self.n_ics, self.n_steps, self.input_dim = n_ics, n_steps, input_dim
