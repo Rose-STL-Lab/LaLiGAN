@@ -3,6 +3,8 @@ import torch.nn as nn
 import numpy as np
 import os
 
+save_model_path = '../saved_models'
+
 
 def train_lassi(
     autoencoder, discriminator, generator, train_loader, test_loader,
@@ -176,13 +178,13 @@ def train_lassi(
                     regressor.print()
 
         if (epoch + 1) % save_interval == 0:
-            if not os.path.exists(f'saved_models/{save_dir}'):
-                os.makedirs(f'saved_models/{save_dir}')
-            torch.save(autoencoder.state_dict(), f'saved_models/{save_dir}/autoencoder_{epoch}.pt')
-            torch.save(discriminator.state_dict(), f'saved_models/{save_dir}/discriminator_{epoch}.pt')
-            torch.save(generator.state_dict(), f'saved_models/{save_dir}/generator_{epoch}.pt')
+            if not os.path.exists(f'{save_model_path}/{save_dir}'):
+                os.makedirs(f'{save_model_path}/{save_dir}')
+            torch.save(autoencoder.state_dict(), f'{save_model_path}/{save_dir}/autoencoder_{epoch}.pt')
+            torch.save(discriminator.state_dict(), f'{save_model_path}/{save_dir}/discriminator_{epoch}.pt')
+            torch.save(generator.state_dict(), f'{save_model_path}/{save_dir}/generator_{epoch}.pt')
             if include_sindy:
-                torch.save(regressor.state_dict(), f'saved_models/{save_dir}/regressor_{epoch}.pt')
+                torch.save(regressor.state_dict(), f'{save_model_path}/{save_dir}/regressor_{epoch}.pt')
 
 
 def train_SINDy(
@@ -279,6 +281,6 @@ def train_SINDy(
                 regressor.print()
 
         if (epoch + 1) % save_interval == 0:
-            if not os.path.exists(f'saved_models/{save_dir}'):
-                os.makedirs(f'saved_models/{save_dir}')
-            torch.save(regressor.state_dict(), f'saved_models/{save_dir}/regressor_{epoch}.pt')
+            if not os.path.exists(f'{save_model_path}/{save_dir}'):
+                os.makedirs(f'{save_model_path}/{save_dir}')
+            torch.save(regressor.state_dict(), f'{save_model_path}/{save_dir}/regressor_{epoch}.pt')

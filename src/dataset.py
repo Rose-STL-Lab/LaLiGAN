@@ -6,7 +6,7 @@ from data_utils.pendulum import get_pendulum_data, get_low_dim_pendulum_data
 from data_utils.lotka import get_lv_data
 from data_utils.double_bump import get_double_bump_data
 
-data_path = './data'
+data_path = '../data'
 
 
 # Modified from SINDy AE: https://github.com/kpchamp/SindyAutoencoders/blob/master/examples/rd/example_reactiondiffusion.py

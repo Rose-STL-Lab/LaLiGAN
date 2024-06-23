@@ -95,12 +95,12 @@ if __name__ == '__main__':
     parser.add_argument('--axis', type=str, default=None)
     parser.add_argument('--name', type=str, default='train')
     args = parser.parse_args()
-    output_path = './data/rotobj'
+    output_path = '../data/rotobj'
     if args.dataset == 'chair':
-        data_path = './data/rotobj/chair.off'
+        data_path = '../data/rotobj/chair.off'
         generate_data_LieGAN(data_path, args.num_samples, args.num_actions, args.axis, output_path, args.name)
     elif args.dataset == 'shelf':
-        data_path = './data/rotobj/bookshelf.off'
+        data_path = '../data/rotobj/bookshelf.off'
         generate_data_LieGAN(data_path, args.num_samples, args.num_actions, args.axis, output_path, args.name)
     else:
         raise NotImplementedError
