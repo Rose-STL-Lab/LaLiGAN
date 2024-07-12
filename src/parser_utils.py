@@ -128,7 +128,8 @@ def get_sindy_args():
     return args
 
 
-def parse_config(file_path):
+def parse_config(file):
+    file_path = "../configs/" + file + ".cfg"
     with open(file_path, 'r') as f:
         # Split lines, filter out empty lines and strip white spaces
         return [item.strip() for item in f.read().split() if item.strip()]

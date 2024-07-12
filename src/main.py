@@ -33,5 +33,5 @@ if __name__ == '__main__':
     # Train model
     train_lassi(autoencoder, discriminator, generator, train_loader, val_loader, **args)
     # Save final model
-    torch.save(autoencoder.state_dict(), f'saved_models/{args["save_dir"]}/autoencoder.pt')
-    torch.save(generator.getLi(), f'saved_models/{args["save_dir"]}/Lie_list.pt')
+    torch.save(autoencoder.state_dict(), f'../saved_models/{args["save_dir"]}/autoencoder.pt')
+    torch.save(generator.getLi(), f'../saved_models/{args["save_dir"]}/Lie_list.pt')

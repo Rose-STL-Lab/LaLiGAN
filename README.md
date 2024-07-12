@@ -40,79 +40,79 @@ python data_utils/rot_obj.py --num_samples 100 --name test
 ### Reaction-Diffusion System
 LaLiGAN Symmetry discovery in 2D latent space:
 ```
-python main.py --config config/rd.cfg
+python main.py --config rd
 ```
 LaLiGAN Symmetry discovery in 3D latent space:
 ```
-python main.py --config config/rd_3d.cfg
+python main.py --config rd_3d
 ```
 SINDy equation discovery in the LaLiGAN 2D latent space:
 ```
-python main_sindy.py --config config/rd_sindy.cfg
+python main_sindy.py --config rd_sindy
 ```
 SINDy equation discovery in the LaLiGAN 3D latent space:
 ```
-python main_sindy.py --config config/rd_sindy_3d.cfg
+python main_sindy.py --config rd_sindy_3d
 ```
 SINDy Autoencoder equation discovery in the 3D latent space:
 ```
-python main.py --config config/rd_sindyonly.cfg
+python main.py --config rd_sindyonly
 ```
 
 ### Nonlinear Pendulum
 LaLiGAN Symmetry discovery for nonlinear pendulum:
 ```
-python main.py --config config/pendulum.cfg
+python main.py --config pendulum
 ```
 (Baseline) LieGAN symmetry discovery for nonlinear pendulum:
 ```
-python main.py --config config/pendulum_liegan.cfg
+python main.py --config pendulum_liegan
 ```
 SINDy equation discovery in the LaLiGAN latent space:
 ```
-python main_sindy.py --config config/pendulum_sindy.cfg
+python main_sindy.py --config pendulum_sindy
 ```
 SINDy Autoencoder equation discovery:
 ```
-python main.py --config config/pendulum_sindyae.cfg
+python main.py --config pendulum_sindyae
 ```
 SINDy equation discovery w/o autoencoder:
 ```
-python main.py --config config/pendulum_sindyonly.cfg
+python main.py --config pendulum_sindyonly
 ```
 
 ### Lotka-Volterra Equations
 LaLiGAN Symmetry discovery for Lotka-Volterra system:
 ```
-python main.py --config config/lv.cfg
+python main.py --config lv
 ```
 (Baseline) LieGAN symmetry discovery Lotka-Volterra system:
 ```
-python main.py --config config/lv_liegan.cfg
+python main.py --config lv_liegan
 ```
 SINDy equation discovery in the LaLiGAN latent space:
 ```
-python main_sindy.py --config config/lv_sindy.cfg
+python main_sindy.py --config lv_sindy
 ```
 SINDy Autoencoder equation discovery:
 ```
-python main.py --config config/lv_sindyae.cfg
+python main.py --config lv_sindyae
 ```
 SINDy equation discovery w/o autoencoder:
 ```
-python main.py --config config/lv_sindyonly.cfg
+python main.py --config lv_sindyonly
 ```
 
 ### Double Bump World
 Learning $\mathrm{SO}(2) \times \mathrm{SO}(2)$ equivariant representation:
 ```
-python main.py --config config/double_bump.cfg
+python main.py --config double_bump
 ```
 
 ### Rotating Object
 Learning $\mathrm{SO}(3)$ equivariant representation:
 ```
-python main.py --config config/rs.cfg
+python main.py --config rs
 ```
 
 ## Cite
