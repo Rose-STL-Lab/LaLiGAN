@@ -117,11 +117,17 @@ python main.py --config rs
 
 ## Cite
 ```
-@article{yang2024latent,
-  title={Latent Space Symmetry Discovery},
-  author={Yang, Jianke and Dehmamy, Nima and Walters, Robin and Yu, Rose},
-  booktitle={International Conference on Machine Learning, {ICML} 2024},
-  series={Proceedings of Machine Learning Research},
-  year={2024}
+
+@inproceedings{yang24latent,
+  title     =  {Latent Space Symmetry Discovery},
+  author    =  {Yang, Jianke and Dehmamy, Nima and Walters, Robin and Yu, Rose},
+  booktitle =  {Proceedings of the 41st International Conference on Machine Learning},
+  pages     =  {56047--56070},
+  year      =  {2024},
+  volume    =  {235},
+  series    =  {Proceedings of Machine Learning Research},
+  publisher =  {PMLR},
+  url       =  {https://proceedings.mlr.press/v235/yang24g.html},
 }
+
 ```
